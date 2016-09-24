@@ -1,0 +1,11 @@
+<h1>Verify <%= @bike_data["bike"]["name"] %></h1>
+<p>This information below is what will be shown on the Verified Bike page. <i>Bike and user data is provided from your Bike Index account. If you wish to make changes to your account or bike details, <a href="http://bikeindex.org/user_home">you must do that here</a>.</i></p>
+<p><b>Once you hit the 'Verify This Bike' button, you will be taken to the bike's verified page and given instructions on how to create your online marketplace listing.</b>
+</p>
+
+<%= render 'form', bike: @bike %>
+
+<%= link_to 'Cancel', current_user %>
+
+<hr/>
+<%= @bike_data.to_yaml %>

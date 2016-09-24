@@ -13,3 +13,148 @@
  *= require_tree .
  *= require_self
  */
+
+ main {
+  margin-top: 5px;
+ }
+
+ .container, .navbar {
+  padding: 0px;
+ }
+
+ h1, h2, h3, h4, h5, h6 {
+  font-family: "ff-dagny-web-pro",sans-serif;
+  font-style: normal;
+  font-weight: 900;
+
+  }
+
+  a, a:visited {
+    color: #3498db;
+  }
+
+  a:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+
+
+ body, p, ol, ul, td {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  color: #666;
+  line-height: 1.5;
+  margin: 5px
+ }
+
+ span.verified {
+    background-image: url("VB_Badge@32px.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 36px;
+    color: green;
+ }
+
+  div.verified_badge {
+    background-image: url("VB_Badge@32px.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    width: 34px;
+    height: 34px;
+    float: right;
+ }
+
+ p {
+  margin-top: 25px;
+ }
+
+ ul.navbar-nav {
+  float: right !important;
+ }
+
+ .navbar-nav .nav-item {
+    font-family: "ff-dagny-web-pro","Open Sans", sans-serif;
+    float: none;
+    text-align: right;
+    line-height: 1.0;
+    padding-bottom: 0rem;
+ }
+
+ .navbar-brand {
+  background-image: url("VB_Text.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 64px;
+  position: relative;
+ }
+
+ #ownerbox {
+  background-color: #ffdaa5;
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 10px;
+ }
+
+
+ p#howitworks {
+  font-size: 24px;
+ }
+
+ div#visitoraction {
+  background-color: #3498db;
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 20px;
+  margin: auto;
+ }
+
+ div#visitoraction a:link, div#visitoraction a:visited {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: underline;
+ }
+
+ div#signinbutton img {
+  display: inline;
+  max-height: 64px
+ }
+
+ ul#ownerbikes {
+  list-style: none;
+ }
+
+ ul#ownerbikes li {
+  float: left;
+  margin: 6px;
+  width: 200px;
+  height: 200px;
+ }
+
+ ul#ownerbikes li img {
+  max-width: 200px;
+ }
+
+.bike_info {
+  margin-top: 5px;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  color: #fff;
+  background-color: #000;
+  max-width: 200px;
+  position: absolute;
+ }
+
+ .bike_info:active, .bike_info:hover {
+    background-color: #3498db;
+ }
+
+.bike_name {
+  font-size: 16px;
+}

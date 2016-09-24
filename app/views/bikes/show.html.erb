@@ -1,0 +1,51 @@
+
+<% if @bike_data["bike"]["stolen"] %>
+<h1><%= @bike_data["bike"]["title"]%> is <span style="color: red;">Stolen</span></h1>
+<p><b>Go to <a href="https://bikeindex.org/bikes/<%= @bike_data["bike"]["id"] %>">this link</a> for more details.</b></p>
+<% else %>
+<h1><%= @bike_data["bike"]["title"]%> is <span class="verified">Verified</span></h1>
+<p>
+This means you can purchase this bike with confidence knowing the legitimate owner has taken the time to register and use this service to verify it's authenticity. Please ensure the information below matches the information in the online marketplace listing that brought you here.
+</p>
+<% end %>
+<hr/>
+<p id="bike_details"><center>
+Year: <b><%= @bike_data["bike"]["year"]%></b>, 
+Manufacturer: <b><%= @bike_data["bike"]["manufacturer_name"]%></b>, 
+Model: <b><%= @bike_data["bike"]["frame_model"]%></b>, 
+Colors: <b><%= @bike_data["bike"]["frame_colors"].join(",")%></b>
+</center>
+<br/><img src="/bikes/image/<%=@bike.id%>"><br/>
+</p>
+
+<% if current_user and @bike.user == current_user %>
+<div id="ownerbox">
+<h4>Since you are signed in as this bike's owner, only you can see the text in this box.</h4>
+<p>
+Here's suggested information for your marketplace posting:<br/>
+
+<% title_text = @bike_data["bike"]["year"].to_s + " " + @bike_data["bike"]["manufacturer_name"].to_s + " " + @bike_data["bike"]["frame_model"].to_s + " *VERIFIED*" %><br/>
+
+<b>Photo:</b> <%= link_to "Download", "/bikes/image/#{@bike.id}" %><br/>
+<b>Title:</b> <input type="text" class="copypaste" style="width: 100%;" value="<%= title_text %>" readonly><br/>
+
+<b>Body:</b> 
+<textarea class="copypaste" style="width: 100%; height: 150px" readonly>
+<%= title_text %>
+<%= @bike_data["bike"]["description"] if !@bike_data["bike"]["description"].empty? %>
+
+This is a verified bike. Please check here to ensure this ad matches this bike: <%= request.original_url %>
+</textarea><br/>
+</p>
+<hr>
+<%= button_to "Un-Verfiy This Bike", bike_path(@bike), method: :delete, data: { confirm: 'Are you sure? You can always re-verify.' } %>
+</div>
+<% end %>
+
+<p>
+<pre style="display: none;">
+  <%# @bike_data["bike"].to_yaml %>
+</pre>
+</p>
+
+

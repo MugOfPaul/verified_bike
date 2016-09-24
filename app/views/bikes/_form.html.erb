@@ -1,0 +1,20 @@
+<%= form_for(bike) do |f| %>
+  <% if bike.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bike.errors.count, "error") %> prohibited this bike from being saved:</h2>
+
+      <ul>
+      <% bike.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :bike_index_uid %>
+  <%= f.hidden_field :user_id %>
+
+  <div class="actions">
+    <%= f.submit "Verify This Bike" %>
+  </div>
+<% end %>

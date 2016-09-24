@@ -1,2 +1,43 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
+
+<h3>Ready to verify a bike? Just click on it!</h3>
+
+<ul id="ownerbikes">
+  <% @bikes.each do | bike | %>
+    <li>
+      <% 
+        uid = bike[1]["bike"]["id"]
+        b = Bike.find_by bike_index_uid: uid
+        verified = false
+
+        if b.nil?
+          link = bikes_path(:user_id => current_user.id, :bike_index_uid => uid)
+          method = :post
+        else
+          link = bike_path(b)
+          method = :get
+          verified = true
+        end
+      %>
+      <%= link_to link, :method => method do %>
+      <!--
+      <%= bike[1]["bike"].to_yaml %>
+      -->
+      <div class="bike_info">
+        <span class="bike_name">
+          <%= bike[1]["bike"]["name"] %>
+        </span>
+        <% if verified %>
+            <div class="verified_badge"></div>
+        <% end %>
+      </div>
+
+      <%= image_tag bike[1]["bike"]["thumb"] %>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
+<br style="clear:both;">
+<p><b>You have <%= pluralize(@bikes.count , 'bike') %> registered to Bike Index. </b>
+<i>Bike and user data is provided from your Bike Index account. If you wish to make changes to your account or bike details, <a href="http://bikeindex.org/user_home">you must do that here</a>.</i> <br/>
+</p>
+
