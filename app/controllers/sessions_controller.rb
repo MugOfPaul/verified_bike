@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     reset_session
     session[:user_id]     = user.id
     session[:auth_data]   = auth
-    redirect_to root_url, :notice => 'Signed in!'
+    redirect_to user, :notice => 'Signed in!'
   end
 
   def destroy
