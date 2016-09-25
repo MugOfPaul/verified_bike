@@ -36,6 +36,7 @@ Here's suggested information for your marketplace posting:<br/>
 
 This is a verified bike. Please check here to ensure this ad matches this bike: <%= request.original_url %>
 </textarea><br/>
+<i>Note that some marketplaces like Craigslists don't allow the links to be clickable.</i>
 </p>
 <hr>
 <%= button_to "Un-Verfiy This Bike", bike_path(@bike), method: :delete, data: { confirm: 'Are you sure? You can always re-verify.' } %>

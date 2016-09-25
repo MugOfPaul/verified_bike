@@ -2,32 +2,33 @@
 
 <p>Online marketplaces like Craigslist, OfferUp, and eBay make it easy to find deals on pre-owned bicycles. Unfortunately, it's also very easy for criminals to sell stolen bikes. Verified Bike provides the seller a way to prove they are the rightful owner of a bicycle.<p>
 
-<p id="howitworks"><h3>How it works</h3>
+
+<div id="howitworks">
 
 <div class="howitworks">
- Owner posts their online marketplace ad which includes a Verified Bike link and Verified Bike images<br/>
-<%= image_tag("Example_Ad.png") %>
-</div>
-<div class="howitworks"> 
-  Buyers see that the bike has been verified and can click on the provided link to ensure this bike is legitimately for sale.<br/>
-  <%= image_tag("Example_Verified.png") %>
+  <%= image_tag("Example_Ad.png") %>
+ <b>Owners</b> post their online marketplace ad which includes a Verified Bike link and images.<br/>
 </div>
 
-</p>
+<div class="howitworks"> 
+  <%= image_tag("Example_Verified.png") %>
+  <b>Buyers</b> follow the Verified Bike link in the ad to ensure this bike is legitimately for sale.<br/>
+</div>
+
+</div>
 
 <div id="visitoraction">
 <% if user_signed_in? %>
 Hey <%= current_user.name %>!<br/> <%= link_to 'Go to Your Dashboard', current_user %>.
 <% else %>
-<%= link_to signin_path do %>
-<div id="signinbutton">
-Ready to get started?<br/>
-Sign In With<br/> <%= image_tag("bikeindexlogo_white_128.png") %>
-</div>
+  <%= link_to signin_path do %>
+  <div id="signinbutton">
+  Ready to get started?<br/>
+  Sign In With<br/> <%= image_tag("bikeindexlogo_white_128.png") %>
+  </div>
+  <% end %>
 <% end %>
 </div>
-
-<% end %>
 
 
 
