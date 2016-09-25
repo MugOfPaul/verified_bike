@@ -93,7 +93,9 @@ class BikesController < ApplicationController
   private
 
     def logo_image 
-      @logo_image ||= MiniMagick::Image.open("#{request.protocol}#{request.host_with_port}#{ActionController::Base.helpers.asset_path('VB_Watermark.png')}")
+      path = "#{request.protocol}#{request.host_with_port}#{ActionController::Base.helpers.asset_path('VB_Watermark.png')}"
+      puts "Logo Image: #{path}"
+      @logo_image ||= MiniMagick::Image.open(path)
     end
 
     # Use callbacks to share common setup or constraints between actions.
