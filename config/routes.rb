@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
+  get '/.well-known/acme-challenge/:id' => 'visitors#letsencrypt'
 
   resources :bikes, only: [ :show, :new, :create, :edit, :update, :destroy ]
   resources :users, only: [ :show, :new, :create, :edit, :update, :destroy ]
