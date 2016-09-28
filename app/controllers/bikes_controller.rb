@@ -30,7 +30,14 @@ class BikesController < ApplicationController
   # GET /bikes/1.json
   def show
     @bike = Bike.find_by_id(params[:id])
+    @bike = Bike.find_by(hash_code: params[:id]) if @bike.nil?
+
     if !@bike.nil?
+      if @bike.hash_code.nil? and @bike.user == current_user
+        @bike.hash_code = generate_hash
+        @bike.save
+      end
+
       @api        = bike_index_api
       @bike_data  = JSON.parse(@api.get("bikes/#{@bike.bike_index_uid}").body)
     else
@@ -53,6 +60,7 @@ class BikesController < ApplicationController
   # POST /bikes.json
   def create
     @bike = Bike.new(params.permit(:bike_index_uid, :user_id))
+    @bike.hash_code = generate_hash
 
     respond_to do |format|
       if @bike.save
@@ -91,6 +99,13 @@ class BikesController < ApplicationController
   end
 
   private
+
+    def generate_hash
+      begin
+        hash_code = SecureRandom.hex(3)
+      end while !Bike.find_by( hash_code: hash_code ).nil?
+      return hash_code
+    end
 
     def logo_image 
       path = "#{request.protocol}#{request.host_with_port}#{ActionController::Base.helpers.asset_path('VB_Watermark.png')}"

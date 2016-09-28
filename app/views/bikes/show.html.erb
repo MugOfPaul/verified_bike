@@ -30,11 +30,12 @@ Here's suggested information for your marketplace posting:<br/>
 <b>Title:</b> <input type="text" class="copypaste" style="width: 100%;" value="<%= title_text %>" readonly><br/>
 
 <b>Body:</b> 
-<textarea class="copypaste" style="width: 100%; height: 150px" readonly>
+<textarea class="copypaste" style="width: 100%; height: 300px" readonly>
 <%= title_text %>
+VERIFIED CODE: <%= @bike.hash_code %>
 <%= @bike_data["bike"]["description"] if !@bike_data["bike"]["description"].empty? %>
 
-This is a verified bike. Please check here to ensure this ad matches this bike: <%= request.original_url %>
+This is a verified bike. Please ensure this ad matches this bike by going here: https://verified.bike/bikes/<%= @bike.hash_code %> or entering the code <%= @bike.hash_code %> at https://verified.bike
 </textarea><br/>
 <i>Note that some marketplaces like Craigslists don't allow the links to be clickable.</i>
 </p>
