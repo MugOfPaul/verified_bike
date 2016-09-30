@@ -29,8 +29,13 @@ class BikesController < ApplicationController
   # GET /bikes/1
   # GET /bikes/1.json
   def show
-    @bike = Bike.find_by_id(params[:id])
-    @bike = Bike.find_by(hash_code: params[:id]) if @bike.nil?
+    if params[:id].to_i != 0
+      @bike = Bike.find_by_id(params[:id].to_i)
+    end
+
+    if @bike.nil?
+      @bike = Bike.find_by(hash_code: params[:id].to_s) 
+    end
 
     if !@bike.nil?
       if @bike.hash_code.nil? and @bike.user == current_user
