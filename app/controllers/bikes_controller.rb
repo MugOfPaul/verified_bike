@@ -17,7 +17,7 @@ class BikesController < ApplicationController
        c.compose "Over"
        c.geometry "+10+10"
     end
-    send_data img.to_blob, :disposition => 'attachment', :filename=>"verified_bike_#{@bike.id}.jpg" 
+    send_data img.to_blob, :disposition => 'attachment', :filename=>"verified_bike_#{@bike.hash_code}.jpg" 
   end
 
   # GET /bikes
