@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require tether/src/css/tether
  */
 
  main {
@@ -72,6 +73,13 @@
   float: right !important;
  }
 
+ input#hash_code_input {
+  border-radius: 5px;
+  text-align: right;
+  font-size: 16px;
+  width: 175px;
+ }
+
  .navbar-nav .nav-item {
     font-family: "ff-dagny-web-pro","Open Sans", sans-serif;
     float: none;
@@ -87,6 +95,11 @@
   width: 350px;
   height: 64px;
   position: relative;
+ }
+
+ .btn-copypaste {
+  margin: 10px;
+  float: right;
  }
 
  #ownerbox {

@@ -13,7 +13,7 @@
 
     <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
       <ul class="nav navbar-nav">
-        <input type="text" id="hash_code_input" name="hash_code_input" placeholder="Enter Code Here" style="text-align: right;"/>
+        <input type="text" id="hash_code_input" name="hash_code_input" placeholder="Enter bike code here"/>
         <script type="text/javascript">
           $( "#hash_code_input" ).change(function() {
             window.location.href="<%= request.protocol %><%= request.host %>:<%= request.port %>"+"/bikes/"+$( this ).val();

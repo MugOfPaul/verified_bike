@@ -20,27 +20,44 @@ Colors: <b><%= @bike_data["bike"]["frame_colors"].join(",")%></b>
 
 <% if current_user and @bike.user == current_user %>
 <div id="ownerbox">
-<h4>Since you are signed in as this bike's owner, only you can see the text in this box.</h4>
+<h4>Online Listing Resources</h4>
 <p>
-Here's suggested information for your marketplace posting:<br/>
+<i>Because you are signed in to Verified Bike as this bike's owner, only you can see this box.</i> Below is suggested information for you to put in your marketplace postings.<br/>
 
 <% title_text = @bike_data["bike"]["year"].to_s + " " + @bike_data["bike"]["manufacturer_name"].to_s + " " + @bike_data["bike"]["frame_model"].to_s + " *VERIFIED*" %><br/>
 
-<b>Photo:</b> <%= link_to "Download", "/bikes/image/#{@bike.id}" %><br/>
-<b>Title:</b> <input type="text" class="copypaste" style="width: 100%;" value="<%= title_text %>" readonly><br/>
+<b>Watermarked Photo:</b> 
+<form method="get" action="<%= "/bikes/image/#{@bike.id}" %>">
+<button type="submit" class="btn btn-info">
+    Download Photo
+</button>
+</form>
 
-<b>Body:</b> 
-<textarea class="copypaste" style="width: 100%; height: 300px" readonly>
+<br/>
+
+<b>Listing Title:</b><br/>
+<input type="text" id="listing-title" class="copypaste" style="width: 100%;" value="<%= title_text %>" readonly><br/>
+<button class="btn btn-info btn-copypaste" data-clipboard-target="#listing-title">
+    Copy Title Text
+</button>
+<br clear="both"/>
+
+<b>Listing Body:</b><br/>
+<textarea class="copypaste" id="listing-body" style="width: 100%; height: 300px" readonly>
 <%= title_text %>
 VERIFIED CODE: <%= @bike.hash_code %>
 <%= @bike_data["bike"]["description"] if !@bike_data["bike"]["description"].empty? %>
 
 This is a verified bike. Please ensure this ad matches this bike by going here: https://verified.bike/bikes/<%= @bike.hash_code %> or entering the code <%= @bike.hash_code %> at https://verified.bike
 </textarea><br/>
+<button class="btn btn-info btn-copypaste" data-clipboard-target="#listing-body">
+    Copy Listing Text
+</button>
+<br clear="both"/>
 <i>Note that some marketplaces like Craigslists don't allow the links to be clickable.</i>
 </p>
 <hr>
-<%= button_to "Un-Verfiy This Bike", bike_path(@bike), method: :delete, data: { confirm: 'Are you sure? You can always re-verify.' } %>
+<%= button_to "Un-Verfiy This Bike", bike_path(@bike), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure? You can always re-verify.' } %>
 </div>
 <% end %>
 
@@ -49,5 +66,7 @@ This is a verified bike. Please ensure this ad matches this bike by going here: 
   <%# @bike_data["bike"].to_yaml %>
 </pre>
 </p>
+
+
 
 

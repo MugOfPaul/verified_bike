@@ -46,7 +46,7 @@ class BikesController < ApplicationController
       @api        = bike_index_api
       @bike_data  = JSON.parse(@api.get("bikes/#{@bike.bike_index_uid}").body)
     else
-      redirect_to(:bikes_unverfied, warning: "Bike not found.")
+      redirect_to(:bikes_unverfied, alert: "The bike you requested could not be found by that link or code.")
     end
   end
 
